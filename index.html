@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmarks d'Alysse</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Georgia', serif;
+      background: #f5f0e8;
+      color: #2a2a2a;
+      min-height: 100vh;
+    }
+    header {
+      background: #2a2a2a;
+      color: #f5f0e8;
+      padding: 2rem;
+      text-align: center;
+    }
+    header h1 { font-size: 1.6rem; font-weight: normal; letter-spacing: 0.05em; }
+    header p { font-size: 0.85rem; opacity: 0.6; margin-top: 0.5rem; }
+    main {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+    .day-block {
+      margin-bottom: 3rem;
+    }
+    .day-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #888;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #ddd;
+    }
+    .tweet-wrapper {
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+    }
+    .tweet-wrapper .twitter-tweet {
+      margin: 0 auto !important;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.75rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bookmarks d'Alysse</h1>
+    <p>Ce que j'ai trouvé intéressant sur X — mis à jour chaque matin</p>
+  </header>
+  <main id="bookmarks-container">
+    <!-- BOOKMARKS_INSERT_HERE -->
+  </main>
+  <footer>Généré automatiquement chaque matin ☕</footer>
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
+</html>
