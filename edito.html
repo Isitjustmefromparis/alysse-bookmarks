@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Dashboard édito — semaine du 01 Jun 2026</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --ink: #2a2520;
+    --kraft: #8b7355;
+    --accent: #c04b2f;
+    --green: #2d8659;
+  }
+  * { box-sizing: border-box }
+  body {
+    font-family: -apple-system, "Helvetica Neue", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0;
+    padding: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  h1 {
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--accent);
+    margin: 0 0 4px 0;
+  }
+  .subtitle {
+    color: var(--kraft);
+    font-size: 13px;
+    margin: 0 0 24px 0;
+  }
+  .week {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .day {
+    background: white;
+    border: 1px solid #e8e0d0;
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .day-today {
+    border-color: var(--accent);
+    box-shadow: 0 2px 8px rgba(192,75,47,0.15);
+  }
+  .day-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    align-items: baseline;
+  }
+  .day-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--accent);
+  }
+  .day-date {
+    font-size: 11px;
+    color: var(--kraft);
+  }
+  .day-body { font-size: 12px; line-height: 1.6 }
+  .task {
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .task-desc { color: var(--ink); flex: 1 }
+  .badge { flex-shrink: 0 }
+  .substack-task { margin-top: 4px }
+  .section {
+    margin-top: 32px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e8e0d0;
+  }
+  .section h2 {
+    font-size: 14px;
+    margin: 0 0 8px 0;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  ul {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .muted { color: var(--kraft); font-style: italic; list-style: none; margin-left: -18px }
+  .legend {
+    margin-top: 32px;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e8e0d0;
+    font-size: 11px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    color: var(--kraft);
+  }
+  .bank-meter {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--green);
+    color: white;
+    border-radius: 4px;
+    font-size: 12px;
+  }
+  .bank-meter.low { background: var(--accent) }
+  .footer {
+    margin-top: 24px;
+    font-size: 10px;
+    color: var(--kraft);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <h1>Dashboard édito</h1>
+  <p class="subtitle">Semaine du 01 Jun au 07 Jun 2026 — calendrier V1</p>
+
+  <div class="week">
+    
+        <div class="day">
+          <div class="day-head">
+            <span class="day-name">LUN</span>
+            <span class="day-date">01 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#c0392b">🔴</span>
+              <span class="task-desc">Insta : Insta photo+légende</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#c0392b">🔴</span>
+              <span class="task-desc">Twitter : 1 tweet banque</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="day">
+          <div class="day-head">
+            <span class="day-name">MAR</span>
+            <span class="day-date">02 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#c0392b">🔴</span>
+              <span class="task-desc">Insta : Veille Substack (interne)</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#2d8659">✅</span>
+              <span class="task-desc">Twitter : 1 tweet banque</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="day day-today">
+          <div class="day-head">
+            <span class="day-name">MER</span>
+            <span class="day-date">03 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#c08827">🟡</span>
+              <span class="task-desc">Insta : Écriture article</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#ccc">—</span>
+              <span class="task-desc">Twitter : —</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="day">
+          <div class="day-head">
+            <span class="day-name">JEU</span>
+            <span class="day-date">04 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#888">⏳</span>
+              <span class="task-desc">Insta : Substack PUBLI + Insta relais</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#888">⏳</span>
+              <span class="task-desc">Twitter : 1 tweet pousse article + 1 banque</span>
+            </div>
+            <div class="task substack-task"><span class="badge" style="color:#2d8659">🟢 Substack</span></div>
+          </div>
+        </div>
+        
+        <div class="day">
+          <div class="day-head">
+            <span class="day-name">VEN</span>
+            <span class="day-date">05 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#888">⏳</span>
+              <span class="task-desc">Insta : Insta coulisses</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#888">⏳</span>
+              <span class="task-desc">Twitter : 1 tweet banque</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="day">
+          <div class="day-head">
+            <span class="day-name">SAM</span>
+            <span class="day-date">06 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#ccc">—</span>
+              <span class="task-desc">Insta : Off</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#ccc">—</span>
+              <span class="task-desc">Twitter : Off</span>
+            </div>
+            
+          </div>
+        </div>
+        
+        <div class="day">
+          <div class="day-head">
+            <span class="day-name">DIM</span>
+            <span class="day-date">07 Jun</span>
+          </div>
+          <div class="day-body">
+            <div class="task">
+              <span class="badge" style="color:#ccc">—</span>
+              <span class="task-desc">Insta : Off</span>
+            </div>
+            <div class="task">
+              <span class="badge" style="color:#ccc">—</span>
+              <span class="task-desc">Twitter : Off</span>
+            </div>
+            
+          </div>
+        </div>
+        
+  </div>
+
+  <div class="section">
+    <h2>Brouillons Substack en stock</h2>
+    <ul>
+      <li><strong>yoto_code</strong> — texte ✓ + cover ✓</li>
+      <li><strong>matt_davella</strong> — texte ✓, cover manquante</li><li><strong>design_parents_enfants</strong> — texte ✓, cover manquante</li><li><strong>poneys</strong> — texte ✓, cover manquante</li><li><strong>sevrage</strong> — texte ✓, cover manquante</li><li><strong>creativite</strong> — texte ✓, cover manquante</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Banque tweets showrunner</h2>
+    <p style="font-size: 13px; margin: 0;">
+      <span class="bank-meter">9 restants</span>
+      <span style="color: var(--kraft); margin-left: 8px;">sur 10 (1 déjà postés)</span>
+    </p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-item" style="color:#2d8659">✅ Publié</span><span class="legend-item" style="color:#2d8659">🟢 Prêt à publier</span><span class="legend-item" style="color:#c08827">🟡 À faire aujourd'hui</span><span class="legend-item" style="color:#888">⏳ À faire</span><span class="legend-item" style="color:#c0392b">🔴 Manqué / non publié</span><span class="legend-item" style="color:#c0392b">❌ Aucun article prêt</span>
+  </div>
+
+  <p class="footer">Mis à jour le 03 Jun 2026 à 16h02 · regénéré chaque matin à 8h via cron</p>
+</body>
+</html>
