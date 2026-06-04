@@ -16,21 +16,26 @@
     font-family: -apple-system, "Helvetica Neue", system-ui, sans-serif;
     background: var(--bg);
     color: var(--ink);
-    margin: 0;
-    padding: 32px;
-    max-width: 900px;
     margin: 0 auto;
+    padding: 16px 14px;
+    max-width: 900px;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (min-width: 700px) {
+    body { padding: 32px }
   }
   h1 {
-    font-weight: 600;
-    font-size: 22px;
+    font-weight: 700;
+    font-size: 24px;
     color: var(--accent);
-    margin: 0 0 4px 0;
+    margin: 0 0 6px 0;
+    line-height: 1.2;
   }
   .subtitle {
     color: var(--kraft);
     font-size: 13px;
-    margin: 0 0 24px 0;
+    margin: 0 0 20px 0;
+    line-height: 1.4;
   }
   .week {
     display: grid;
@@ -44,7 +49,7 @@
   .day {
     background: white;
     border: 1px solid #e8e0d0;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 14px 16px;
   }
   .day-today {
@@ -62,15 +67,15 @@
   }
   .day-name {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     color: var(--accent);
     letter-spacing: 0.04em;
   }
   .day-date {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--kraft);
   }
-  .day-body { font-size: 12.5px; line-height: 1.5 }
+  .day-body { font-size: 13.5px; line-height: 1.5 }
   .task {
     margin-bottom: 12px;
     padding-bottom: 10px;
@@ -89,27 +94,36 @@
   }
   .task-type {
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13.5px;
     color: var(--ink);
   }
-  .task-desc { color: var(--ink); font-size: 12.5px; line-height: 1.45 }
+  .task-desc { color: var(--ink); font-size: 13.5px; line-height: 1.45 }
   .task-who {
-    font-size: 11px;
+    font-size: 12px;
     color: var(--kraft);
     font-style: italic;
     margin-top: 4px;
   }
-  .badge { flex-shrink: 0; font-size: 14px }
+  .badge { flex-shrink: 0; font-size: 16px }
+  @media (min-width: 700px) {
+    .day-name { font-size: 15px }
+    .day-date { font-size: 12px }
+    .day-body { font-size: 12.5px }
+    .task-type { font-size: 12px }
+    .task-desc { font-size: 12.5px }
+    .task-who { font-size: 11px }
+    .badge { font-size: 14px }
+  }
   .section {
-    margin-top: 32px;
-    padding: 16px;
+    margin-top: 20px;
+    padding: 14px 16px;
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #e8e0d0;
   }
   .section h2 {
-    font-size: 14px;
-    margin: 0 0 8px 0;
+    font-size: 13px;
+    margin: 0 0 10px 0;
     color: var(--accent);
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -117,36 +131,47 @@
   ul {
     margin: 0;
     padding-left: 18px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 1.7;
   }
   .muted { color: var(--kraft); font-style: italic; list-style: none; margin-left: -18px }
   .legend {
-    margin-top: 32px;
-    padding: 12px 16px;
+    margin-top: 20px;
+    padding: 12px 14px;
     background: white;
-    border-radius: 8px;
+    border-radius: 10px;
     border: 1px solid #e8e0d0;
-    font-size: 11px;
+    font-size: 12px;
     display: flex;
-    gap: 18px;
+    gap: 12px;
     flex-wrap: wrap;
     color: var(--kraft);
+    line-height: 1.8;
   }
   .bank-meter {
     display: inline-block;
-    padding: 2px 8px;
+    padding: 3px 10px;
     background: var(--green);
     color: white;
-    border-radius: 4px;
-    font-size: 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
   }
   .bank-meter.low { background: var(--accent) }
   .footer {
     margin-top: 24px;
-    font-size: 10px;
+    font-size: 11px;
     color: var(--kraft);
     text-align: center;
+    padding-bottom: 16px;
+  }
+  @media (min-width: 700px) {
+    .section { margin-top: 32px; padding: 16px }
+    .section h2 { font-size: 14px }
+    ul { font-size: 13px }
+    .legend { font-size: 11px; gap: 18px; margin-top: 32px }
+    .bank-meter { font-size: 12px; padding: 2px 8px }
+    .footer { font-size: 10px }
   }
 </style>
 </head>
@@ -356,6 +381,6 @@
     <span class="legend-item" style="color:#2d8659">✅ Publié</span><span class="legend-item" style="color:#2d8659">🟢 Prêt à publier</span><span class="legend-item" style="color:#c08827">🟡 À faire aujourd'hui</span><span class="legend-item" style="color:#888">⏳ À faire</span><span class="legend-item" style="color:#c0392b">🔴 Manqué / non publié</span><span class="legend-item" style="color:#c0392b">❌ Aucun article prêt</span><span class="legend-item" style="color:#888">✓ Action interne passée</span>
   </div>
 
-  <p class="footer">Mis à jour le 04 Jun 2026 à 08h00 · regénéré chaque matin à 8h via cron</p>
+  <p class="footer">Mis à jour le 04 Jun 2026 à 13h32 · regénéré chaque matin à 8h via cron</p>
 </body>
 </html>
