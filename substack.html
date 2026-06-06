@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Substack — file de publication</title>
+<style>
+  :root {
+    --bg: #faf7f2;
+    --ink: #2a2520;
+    --kraft: #8b7355;
+    --accent: #c04b2f;
+    --green: #2d8659;
+  }
+  * { box-sizing: border-box }
+  body {
+    font-family: -apple-system, "Helvetica Neue", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    margin: 0 auto;
+    padding: 16px 14px;
+    max-width: 900px;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (min-width: 700px) {
+    body { padding: 32px }
+  }
+  .nav {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+  .nav a {
+    color: var(--kraft);
+    text-decoration: none;
+  }
+  .nav a:hover { color: var(--accent) }
+  h1 {
+    font-weight: 700;
+    font-size: 24px;
+    color: var(--accent);
+    margin: 0 0 6px 0;
+  }
+  .subtitle {
+    color: var(--kraft);
+    font-size: 13px;
+    margin: 0 0 24px 0;
+  }
+  h2.section-header {
+    font-size: 14px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 32px 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e8e0d0;
+  }
+  .article {
+    background: white;
+    border: 1px solid #e8e0d0;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+  .article-head {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .cover-thumb {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .cover-missing {
+    width: 90px;
+    height: 90px;
+    border: 1px dashed #ccc;
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--kraft);
+    text-align: center;
+    padding: 8px;
+  }
+  .article-meta {
+    flex: 1;
+    min-width: 200px;
+  }
+  .article-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--ink);
+    margin: 0 0 4px 0;
+    line-height: 1.3;
+  }
+  .article-subtitle {
+    font-size: 12.5px;
+    color: var(--kraft);
+    margin: 0 0 8px 0;
+  }
+  .article-subtitle em { font-style: italic }
+  .excerpt {
+    font-size: 12.5px;
+    color: var(--ink);
+    line-height: 1.4;
+    margin: 8px 0;
+  }
+  .badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+  .badge {
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #f0e8d8;
+    color: var(--ink);
+  }
+  .badge-published { background: var(--green); color: white }
+  .badge-stock { background: #c08827; color: white }
+  .badge-ok { background: var(--green); color: white }
+  .badge-ko { background: var(--accent); color: white }
+  .badge-info { background: var(--kraft); color: white }
+  .badge-idea { background: #c08827; color: white }
+  .links {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .link-button {
+    display: inline-block;
+    font-size: 12px;
+    padding: 4px 10px;
+    background: white;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    border-radius: 4px;
+    text-decoration: none;
+  }
+  .link-button:hover {
+    background: var(--accent);
+    color: white;
+  }
+  .article-idea { background: #f8f3e7; border-color: #e8d8b0 }
+  .footer {
+    margin-top: 24px;
+    font-size: 11px;
+    color: var(--kraft);
+    text-align: center;
+    padding-bottom: 16px;
+  }
+</style>
+</head>
+<body>
+  <div class="nav">
+    <a href="/dashboards/edito.html">← Retour dashboard édito</a>
+  </div>
+  <h1>📰 Substack — file de publication</h1>
+  <p class="subtitle">Tous les articles, brouillons et idées du dossier substack/</p>
+
+  <h2 class="section-header">Articles complets (8)</h2>
+  
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">Je suis un roi qui ne savait pas signer son nom</h2>
+              <p class="article-subtitle"><em>L'imprimerie est arrivée. Et c'est moi le roi médiéval.</em></p>
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 5900 car.</span>
+              </div>
+              <p class="excerpt">J'imagine très bien le roi médiéval.</p>
+              <div class="links">
+                <a href="/projects/substack/article_roi.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">Mon gestionnaire de bookmarks est meilleur que le tien</h2>
+              <p class="article-subtitle"><em>J'ai passé trois jours à chercher une vidéo que je n'ai jamais retrouvée. Entre deux allers-retours devant le frigo dont j'avais oublié ce que je venais y chercher.</em></p>
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 6700 car.</span>
+              </div>
+              <p class="excerpt">La vidéo, c'était une pub. Une start-up no-code qui s'appelle Bubble. Sauf que la pub, elle, était géniale. Un montage presque épileptique de "wins" attrapés un peu partout sur internet : un type qui ...</p>
+              <div class="links">
+                <a href="/projects/substack/article_commonplace.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <a href="/projects/substack/cover_yoto_code.png" target="_blank"><img src="/projects/substack/cover_yoto_code.png" alt="cover" class="cover-thumb"></a>
+            <div class="article-meta">
+              <h2 class="article-title">J'ai codé une appli pour faire les cartes Yoto de Myriam (et j'avais jamais touché à Python)</h2>
+              <p class="article-subtitle"><em>Coder avec une IA, ce n'est pas coder. C'est diriger.</em></p>
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ok">✅ Cover</span>
+                <span class="badge badge-info">📄 Texte ✓ · 8100 car.</span>
+              </div>
+              <p class="excerpt">Il est 23h17 un mardi soir, je suis assise par terre dans le couloir, dos contre le mur, le lecteur Yoto de Myriam dans une main, mon téléphone dans l'autre.</p>
+              <div class="links">
+                <a href="/projects/substack/article_yoto_code.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                <a href="/projects/substack/cover_yoto_code.png" target="_blank" class="link-button">🖼️ Voir la cover</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">J'ai remplacé mes verres à pied par une boîte de lait Gallia</h2>
+              <p class="article-subtitle"><em>Et je dis ça en regardant la chaise Tripp Trapp à 350 euros qui ne plaît ni à mon bébé ni à moi.</em></p>
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 6900 car.</span>
+              </div>
+              <p class="excerpt">Il y a un moment précis où j'ai compris.</p>
+              <div class="links">
+                <a href="/projects/substack/article_design_parents_enfants.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">Sevrer ton bébé, c'est te sevrer toi-même</h2>
+              <p class="article-subtitle"><em>Et je l'écris avec une feuille de chou dans le soutien-gorge, en évitant que ça explose, après avoir pleuré trois fois aujourd'hui sans savoir pourquoi.</em></p>
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 7100 car.</span>
+              </div>
+              <p class="excerpt">Hier soir je rentre. Métro, bureau, deux heures de trajet, mal partout. Je pose mon sac. Thibaud me dit que Charly vient d'avaler deux cent millilitres au biberon avec un enthousiasme de bon mangeur. ...</p>
+              <div class="links">
+                <a href="/projects/substack/article_sevrage.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">Le Web n'aime pas mes poneys</h2>
+              <p class="article-subtitle"><em>Mon agent IA voulait juste réserver un poney shetland. Le Web l'a pris pour un bot chinois.</em></p>
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 3300 car.</span>
+              </div>
+              <p class="excerpt">L'autre jour, j'ai demandé à mon agent IA de me trouver un loueur de poneys shetland pour l'anniversaire de ma fille. Tâche raisonnable. Truc que j'aurais fait moi-même en quinze onglets, sauf que jus...</p>
+              <div class="links">
+                <a href="/projects/substack/article_poneys.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">Mon ancien gourou a craqué</h2>
+              
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 1500 car.</span>
+              </div>
+              
+              <div class="links">
+                <a href="/projects/substack/article_matt_davella.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article">
+          <div class="article-head">
+            <div class="cover-missing">Pas de cover</div>
+            <div class="article-meta">
+              <h2 class="article-title">Tu es créative si on le sait</h2>
+              
+              <div class="badges">
+                <span class="badge badge-stock">📝 En stock</span>
+                <span class="badge badge-ko">❌ Cover manquante</span>
+                <span class="badge badge-info">📄 Texte ✓ · 4700 car.</span>
+              </div>
+              
+              <div class="links">
+                <a href="/projects/substack/article_creativite.md" target="_blank" class="link-button">📂 Voir le .md</a>
+                
+              </div>
+            </div>
+          </div>
+        </article>
+        
+
+  <h2 class="section-header">Idées en réserve (2)</h2>
+  
+        <article class="article article-idea">
+          <div class="article-meta">
+            <h2 class="article-title">💡 Idée article — La créativité, c'est de la place</h2>
+            
+            <div class="badges">
+              <span class="badge badge-idea">💡 Idée seulement</span>
+            </div>
+            <p class="excerpt">- L'image Insta de l'atelier Montessori parfait (plafond haut, étagères basses, baies vitrées)</p>
+            <div class="links">
+              <a href="/projects/substack/idee_creativite_immobilier.md" target="_blank" class="link-button">📂 Voir le .md</a>
+            </div>
+          </div>
+        </article>
+        
+        <article class="article article-idea">
+          <div class="article-meta">
+            <h2 class="article-title">💡 Idée article — Le design absent du postpartum (tire-laits)</h2>
+            
+            <div class="badges">
+              <span class="badge badge-idea">💡 Idée seulement</span>
+            </div>
+            
+            <div class="links">
+              <a href="/projects/substack/idee_tire-laits-design.md" target="_blank" class="link-button">📂 Voir le .md</a>
+            </div>
+          </div>
+        </article>
+        
+
+  <p class="footer">Mis à jour le 06 Jun 2026 à 14h11</p>
+</body>
+</html>
