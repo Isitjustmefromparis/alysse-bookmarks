@@ -128,6 +128,28 @@
     font-weight: 600;
   }
   .day-link:hover { background: #a03a25 }
+  .day-activity {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--kraft);
+    font-size: 12px;
+  }
+  .day-activity > summary {
+    cursor: pointer;
+    color: var(--kraft);
+    font-weight: 600;
+    list-style: none;
+  }
+  .day-activity > summary::-webkit-details-marker { display: none }
+  .act-item {
+    margin-top: 8px;
+    padding: 6px 8px;
+    background: rgba(139,115,85,0.08);
+    border-radius: 6px;
+  }
+  .act-time { font-weight: 700; color: var(--ink) }
+  .act-kind { color: var(--kraft) }
+  .act-summary { margin-top: 4px; color: var(--ink); opacity: 0.85; white-space: normal }
   @media (min-width: 700px) {
     .day-name { font-size: 15px }
     .day-date { font-size: 12px }
@@ -230,6 +252,7 @@
               </div>
             
             
+            
           </div>
         </div>
         
@@ -266,6 +289,7 @@
                 <div class="task-desc">1 tweet showrunner posté auto à 10h via Zernio (couplé au post Insta).</div>
                 <div class="task-who">Marcel (cron auto)</div>
               </div>
+            
             
             
           </div>
@@ -306,6 +330,7 @@
               </div>
             
             <a href="substack.html" class="day-link">→ Entrer dans le mercredi (file Substack)</a>
+            <details class="day-activity"><summary>🤖 1 publi(s) auto</summary><div class="act-item"><span class="act-time">13:45</span> <span class="act-kind">📝 Note Substack</span> · <a href="https://alysseh.substack.com/note/test" target="_blank">voir</a><div class="act-summary">TEST — note factice de vérification</div></div></details>
           </div>
         </div>
         
@@ -333,6 +358,7 @@
                 <div class="task-desc">Veille / amorce article dimanche : choix angle, structure, premières notes.</div>
                 <div class="task-who">Toi → tu choisis l'angle, je propose une structure si tu veux</div>
               </div>
+            
             
             
           </div>
@@ -373,6 +399,7 @@
               </div>
             
             
+            
           </div>
         </div>
         
@@ -391,6 +418,7 @@
                 <div class="task-desc">Off — vie perso, capture libre de matière pour la semaine suivante.</div>
                 <div class="task-who">—</div>
               </div>
+            
             
             
           </div>
@@ -431,6 +459,7 @@
               </div>
             
             <a href="substack.html" class="day-link">→ Entrer dans le dimanche (file Substack)</a>
+            
           </div>
         </div>
         
@@ -439,8 +468,8 @@
   <div class="section">
     <h2>Brouillons Substack en stock</h2>
     <ul>
-      <li><strong>bon_moment_enfants</strong> — texte ✓ + cover ✓</li><li><strong>design_parents_enfants</strong> — texte ✓ + cover ✓</li><li><strong>yoto_code</strong> — texte ✓ + cover ✓</li><li><strong>bebe_collegue</strong> — texte ✓ + cover ✓</li><li><strong>roi</strong> — texte ✓ + cover ✓</li>
-      <li><strong>hawks</strong> — texte ✓, cover manquante</li><li><strong>notes_pourries</strong> — texte ✓, cover manquante</li><li><strong>matt_davella</strong> — texte ✓, cover manquante</li><li><strong>poneys</strong> — texte ✓, cover manquante</li><li><strong>creativite_immobilier</strong> — texte ✓, cover manquante</li><li><strong>sevrage</strong> — texte ✓, cover manquante</li><li><strong>creativite</strong> — texte ✓, cover manquante</li><li><strong>commonplace</strong> — texte ✓, cover manquante</li>
+      <li><strong>hawks</strong> — texte ✓ + cover ✓</li><li><strong>bon_moment_enfants</strong> — texte ✓ + cover ✓</li><li><strong>design_parents_enfants</strong> — texte ✓ + cover ✓</li><li><strong>yoto_code</strong> — texte ✓ + cover ✓</li><li><strong>bebe_collegue</strong> — texte ✓ + cover ✓</li><li><strong>roi</strong> — texte ✓ + cover ✓</li>
+      <li><strong>notes_pourries</strong> — texte ✓, cover manquante</li><li><strong>matt_davella</strong> — texte ✓, cover manquante</li><li><strong>poneys</strong> — texte ✓, cover manquante</li><li><strong>creativite_immobilier</strong> — texte ✓, cover manquante</li><li><strong>sevrage</strong> — texte ✓, cover manquante</li><li><strong>creativite</strong> — texte ✓, cover manquante</li><li><strong>commonplace</strong> — texte ✓, cover manquante</li>
     </ul>
   </div>
 
@@ -456,6 +485,6 @@
     <span class="legend-item" style="color:#2d8659">✅ Publié</span><span class="legend-item" style="color:#2d8659">🟢 Prêt à publier</span><span class="legend-item" style="color:#c08827">🟡 À faire aujourd'hui</span><span class="legend-item" style="color:#888">⏳ À faire</span><span class="legend-item" style="color:#c0392b">🔴 Manqué / non publié</span><span class="legend-item" style="color:#c0392b">❌ Aucun article prêt</span><span class="legend-item" style="color:#888">✓ Action interne passée</span>
   </div>
 
-  <p class="footer">Mis à jour le 01 Jul 2026 à 08h00 · regénéré chaque matin à 8h via cron</p>
+  <p class="footer">Mis à jour le 01 Jul 2026 à 13h45 · regénéré chaque matin à 8h via cron</p>
 </body>
 </html>
