@@ -72,9 +72,10 @@
     background:rgba(255,255,255,.9);color:#333;border-radius:50%;
     width:26px;height:26px;line-height:26px;text-align:center;font-size:15px;
   }
-  .key .solf{font-size:20px;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .key .shape{font-size:26px;line-height:1;margin-bottom:2px;text-shadow:0 1px 2px rgba(0,0,0,.25)}
+  .key .solf{font-size:18px;text-shadow:0 1px 2px rgba(0,0,0,.25)}
   .key.dark{color:#3a2f00}
-  .key.dark .solf{text-shadow:none}
+  .key.dark .solf,.key.dark .shape{text-shadow:none}
   .key:active,.key.flash{transform:translateY(4px) scale(.97);filter:brightness(1.15)}
   .hint{text-align:center;color:var(--soft);font-size:14px;margin:14px 0 0}
 
@@ -124,9 +125,11 @@
     box-shadow:inset 0 -4px 0 rgba(0,0,0,.15), 0 3px 6px rgba(0,0,0,.18);
     position:relative;transition:transform .12s;
   }
+  .dot .sh{font-size:26px;line-height:1}
   .dot .n{position:absolute;top:-6px;right:-6px;background:#fff;color:#333;border-radius:50%;width:20px;height:20px;line-height:20px;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,.2)}
   .dot.dark{color:#3a2f00}
-  .note .lyric{font-size:12px;color:var(--soft);text-align:center;line-height:1.15;min-height:26px}
+  .note .solf-lbl{font-size:12.5px;font-weight:800;color:var(--ink);text-align:center;line-height:1}
+  .note .lyric{font-size:12px;color:var(--soft);text-align:center;line-height:1.15;min-height:22px}
   .note.on .dot{transform:scale(1.35);box-shadow:0 0 0 5px #ffd60a, 0 6px 14px rgba(0,0,0,.25)}
   .note.done .dot{opacity:.42}
 
@@ -142,8 +145,10 @@
 
   @media (max-width:520px){
     .key{width:60px;height:104px}
-    .key .solf{font-size:17px}
-    .dot{width:46px;height:46px;font-size:18px}
+    .key .solf{font-size:16px}
+    .key .shape{font-size:22px}
+    .dot{width:46px;height:46px}
+    .dot .sh{font-size:22px}
     .note{width:52px}
   }
   @media print{
@@ -157,13 +162,13 @@
 <body>
 <header>
   <h1>🎹 Mes comptines</h1>
-  <p>Appuie sur les touches de la même couleur que les gommettes&nbsp;!</p>
+  <p>Appuie sur la touche qui a la même forme&nbsp;: ★ ■ ● ▲ ▬</p>
 </header>
 
 <nav>
   <button data-tab="chansons" class="active">🎵 Chansons</button>
   <button data-tab="piano">🎹 Le piano</button>
-  <button data-tab="guide">🌈 Gommettes</button>
+  <button data-tab="guide">🔷 Les touches</button>
 </nav>
 
 <!-- ====== CHANSONS ====== -->
@@ -199,9 +204,9 @@
 <section id="tab-piano">
   <div class="wrap">
     <div class="card">
-      <p class="lead">Appuie sur une touche pour entendre la note.<br>Chaque note a une couleur et un numéro : c'est ta gommette !</p>
+      <p class="lead">Appuie sur une touche pour entendre la note.<br>Chaque note a une <b>forme Vilac</b> (★ ■ ● ▲ ▬), une couleur et un numéro.</p>
       <div class="keyboard" id="keyboard"></div>
-      <p class="hint">Astuce : ta fille peut juste jouer avec les couleurs, sans lire les notes 🎶</p>
+      <p class="hint">Astuce : ta fille peut juste suivre les formes, sans lire les notes 🎶</p>
     </div>
   </div>
 </section>
@@ -210,8 +215,8 @@
 <section id="tab-guide">
   <div class="wrap">
     <div class="card">
-      <h2 style="text-align:center;margin-bottom:6px">🌈 Où coller les gommettes</h2>
-      <p class="lead">Colle une gommette de chaque couleur sur les touches du piano, de gauche à droite,<br>dans cet ordre. Tu peux aussi écrire le numéro dessus.</p>
+      <h2 style="text-align:center;margin-bottom:6px">🔷 Les touches du piano</h2>
+      <p class="lead">Ton piano <b>Vilac</b> utilise ces formes (★ ■ ● ▲ ▬), de gauche à droite.<br>L'appli utilise les mêmes : ta fille associe la forme de l'écran à celle du piano.<br>Tu peux aussi coller des gommettes de couleur si tu préfères.</p>
       <div class="guide-list" id="guide-list"></div>
       <button class="btn secondary print-btn" onclick="window.print()">🖨️ Imprimer le guide</button>
     </div>
@@ -222,25 +227,27 @@
 
 <script>
 /* ============================================================
-   NOTES : couleur + numéro de gommette + fréquence (Hz)
-   Les 3 comptines n'utilisent que Do, Ré, Mi, Fa, Sol (touches 1 à 5)
+   NOTES : forme Vilac + couleur + numéro + fréquence (Hz)
+   Formes officielles Vilac (touches 1 à 5) : ★ ■ ● ▲ ▬
+   Les touches 6 à 8 (La, Si, Do aigu) utilisent des formes en plus.
    ============================================================ */
 const NOTES = {
-  do : {solf:"Do",  num:1, color:"#e6194B", dark:false, freq:261.63},
-  re : {solf:"Ré",  num:2, color:"#F58231", dark:false, freq:293.66},
-  mi : {solf:"Mi",  num:3, color:"#FFD60A", dark:true,  freq:329.63},
-  fa : {solf:"Fa",  num:4, color:"#3CB44B", dark:false, freq:349.23},
-  sol: {solf:"Sol", num:5, color:"#22C3E6", dark:true,  freq:392.00},
-  la : {solf:"La",  num:6, color:"#4363D8", dark:false, freq:440.00},
-  si : {solf:"Si",  num:7, color:"#911EB4", dark:false, freq:493.88},
-  do2: {solf:"Do",  num:8, color:"#F032E6", dark:false, freq:523.25},
+  do : {solf:"Do",  num:1, shape:"★", shapeName:"étoile",    color:"#e6194B", dark:false, freq:261.63},
+  re : {solf:"Ré",  num:2, shape:"■", shapeName:"carré",     color:"#F58231", dark:false, freq:293.66},
+  mi : {solf:"Mi",  num:3, shape:"●", shapeName:"rond",      color:"#FFD60A", dark:true,  freq:329.63},
+  fa : {solf:"Fa",  num:4, shape:"▲", shapeName:"triangle",  color:"#3CB44B", dark:false, freq:349.23},
+  sol: {solf:"Sol", num:5, shape:"▬", shapeName:"rectangle", color:"#22C3E6", dark:true,  freq:392.00},
+  la : {solf:"La",  num:6, shape:"♥", shapeName:"cœur",      color:"#4363D8", dark:false, freq:440.00},
+  si : {solf:"Si",  num:7, shape:"◆", shapeName:"losange",   color:"#911EB4", dark:false, freq:493.88},
+  do2: {solf:"Do",  num:8, shape:"⬢", shapeName:"hexagone",  color:"#F032E6", dark:false, freq:523.25},
 };
 const ORDER = ["do","re","mi","fa","sol","la","si","do2"];
 
 /* ============================================================
    COMPTINES  (note + syllabe chantée)
-   ⚠️ Au clair de la lune : mélodie certaine.
-      Une souris verte / Bateau sur l'eau : à vérifier à l'oreille.
+   ✅ vérifiées : Au clair de la lune, Frère Jacques, Ah vous dirai-je maman,
+      Bateau sur l'eau (partition Vilac).
+   🟠 à confirmer : L'araignée Gipsy, Une souris verte.
    ============================================================ */
 const SONGS = [
   {
@@ -297,12 +304,12 @@ const SONGS = [
   },
   {
     id:"bateau", emoji:"⛵", title:"Bateau sur l'eau",
-    sub:"Touches Do · Mi · Sol", verified:false,
+    sub:"Partition Vilac · Do → Sol", verified:true,
     seq:[
-      ["sol","Ba"],["mi","teau"],["sol","sur"],["mi","l'eau"],
-      ["sol","la"],["sol","ri"],["mi","vière"],["sol","la"],["sol","ri"],["mi","vière"],
-      ["sol","Ba"],["mi","teau"],["sol","sur"],["mi","l'eau"],
-      ["sol","la"],["sol","ri"],["mi","vière"],["do","plouf !"]
+      ["sol","Ba"],["mi","teau"],["sol","sur"],["mi","l'eau"],["re","la"],["mi","ri"],
+      ["fa","viè"],["mi","re"],["re","la"],["sol","ri"],["mi","viè"],["do","re"],
+      ["sol","Ba"],["mi","teau"],["sol","sur"],["mi","l'eau"],["re","la"],["mi","ri"],
+      ["fa","viè"],["mi","re"],["re","et"],["sol","plouf"],["mi","dans"],["do","l'eau"]
     ]
   }
 ];
@@ -353,7 +360,7 @@ ORDER.forEach(key=>{
   const el = document.createElement("button");
   el.className = "key"+(n.dark?" dark":"");
   el.style.background = n.color;
-  el.innerHTML = `<span class="num">${n.num}</span><span class="solf">${n.solf}</span>`;
+  el.innerHTML = `<span class="num">${n.num}</span><span class="shape">${n.shape}</span><span class="solf">${n.solf}</span>`;
   el.onclick = ()=>{ playNote(key,0.6); el.classList.add("flash"); setTimeout(()=>el.classList.remove("flash"),140); };
   kb.appendChild(el);
 });
@@ -367,8 +374,8 @@ ORDER.forEach(key=>{
   const row = document.createElement("div");
   row.className = "guide-row";
   row.innerHTML = `
-    <div class="gdot${n.dark?' dark':''}" style="background:${n.color}">${n.num}</div>
-    <div class="gtxt"><b>Touche ${n.num} — ${n.solf}</b><span>Gommette ${colorName(n.color)}</span></div>`;
+    <div class="gdot${n.dark?' dark':''}" style="background:${n.color}">${n.shape}</div>
+    <div class="gtxt"><b>Touche ${n.num} — ${n.solf} — ${n.shape} ${n.shapeName}</b><span>ou gommette ${colorName(n.color)}</span></div>`;
   gl.appendChild(row);
 });
 function colorName(hex){
@@ -428,8 +435,9 @@ function renderSeq(){
     wrap.className = "note"; wrap.dataset.i = i;
     wrap.innerHTML = `
       <div class="dot${n.dark?' dark':''}" style="background:${n.color}">
-        ${n.solf}<span class="n">${n.num}</span>
+        <span class="sh">${n.shape}</span><span class="n">${n.num}</span>
       </div>
+      <div class="solf-lbl">${n.solf}</div>
       <div class="lyric">${lyric}</div>`;
     wrap.querySelector(".dot").onclick = ()=>{
       playNote(key,0.6);
