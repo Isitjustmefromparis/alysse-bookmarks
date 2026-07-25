@@ -143,6 +143,32 @@
   .print-btn{display:block;margin:16px auto 0}
   .lead{color:var(--soft);font-size:15px;text-align:center;margin:0 0 18px;line-height:1.5}
 
+  /* --- Éditeur (Ajouter) --- */
+  .ed-input{display:block;width:100%;font-family:inherit;font-size:17px;font-weight:700;
+    padding:14px 16px;border:2px solid #e7e0d4;border-radius:14px;margin:0 0 16px;color:var(--ink);background:#fff}
+  .ed-input:focus{outline:none;border-color:#4363D8}
+  .ed-palette{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:16px}
+  .ed-key{border:none;cursor:pointer;font-family:inherit;color:#fff;font-weight:800;
+    width:62px;height:70px;border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:2px;transition:transform .08s}
+  .ed-key:active{transform:scale(.92)}
+  .ed-key.dark{color:#3a2f00}
+  .ed-key .sh{font-size:22px;line-height:1}
+  .ed-key .lb{font-size:12px}
+  .ed-preview-box{background:#faf6ee;border:2px dashed #e0d8c8;border-radius:14px;padding:12px;min-height:78px;margin-bottom:14px}
+  .ed-preview{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center;min-height:54px}
+  .ed-empty{color:var(--soft);font-size:14px}
+  .ed-preview .pv{width:40px;height:40px;border-radius:50%;color:#fff;font-size:19px;font-weight:800;
+    display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -3px 0 rgba(0,0,0,.15)}
+  .ed-preview .pv.dark{color:#3a2f00}
+  .ed-count{text-align:center;font-size:13px;color:var(--soft);margin-top:6px}
+  .ed-saved{display:grid;gap:8px}
+  .ed-saved .row{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;box-shadow:var(--shadow);padding:10px 14px}
+  .ed-saved .row b{flex:1;font-size:16px}
+  .ed-saved .row button{border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:14px;
+    padding:8px 12px;border-radius:999px;background:#efe9dd;color:var(--ink)}
+  .ed-saved .row button.del{background:#ffe0e0;color:#b00020}
+
   @media (max-width:520px){
     .key{width:60px;height:104px}
     .key .solf{font-size:16px}
@@ -169,6 +195,7 @@
   <button data-tab="chansons" class="active">🎵 Chansons</button>
   <button data-tab="piano">🎹 Le piano</button>
   <button data-tab="guide">🔷 Les touches</button>
+  <button data-tab="ajouter">➕ Ajouter</button>
 </nav>
 
 <!-- ====== CHANSONS ====== -->
@@ -219,6 +246,35 @@
       <p class="lead">Ton piano <b>Vilac</b> utilise ces formes (★ ■ ● ▲ ▬), de gauche à droite.<br>L'appli utilise les mêmes : ta fille associe la forme de l'écran à celle du piano.<br>Tu peux aussi coller des gommettes de couleur si tu préfères.</p>
       <div class="guide-list" id="guide-list"></div>
       <button class="btn secondary print-btn" onclick="window.print()">🖨️ Imprimer le guide</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AJOUTER UNE COMPTINE ====== -->
+<section id="tab-ajouter">
+  <div class="wrap">
+    <div class="card">
+      <h2 style="text-align:center;margin-bottom:4px">➕ Ajouter une comptine</h2>
+      <p class="lead">Regarde ta carte Vilac et <b>tape les formes dans l'ordre</b>.<br>Tu entends chaque note : tu peux vérifier au fur et à mesure.</p>
+
+      <input id="ed-title" class="ed-input" placeholder="Nom de la comptine (ex : J'ai du bon tabac)" maxlength="40">
+
+      <div class="ed-palette" id="ed-palette"></div>
+
+      <div class="ed-preview-box">
+        <div class="ed-preview" id="ed-preview"><span class="ed-empty">Appuie sur les formes ci-dessus…</span></div>
+      </div>
+
+      <div class="controls">
+        <button class="btn grey" id="ed-undo">⌫ Effacer la dernière</button>
+        <button class="btn grey" id="ed-clear">🗑️ Tout effacer</button>
+        <button class="btn" id="ed-save">💾 Enregistrer</button>
+      </div>
+
+      <div id="ed-saved-wrap" hidden>
+        <h3 style="margin:18px 0 8px">Mes comptines enregistrées</h3>
+        <div class="ed-saved" id="ed-saved"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -386,17 +442,35 @@ function colorName(hex){
 }
 
 /* ============================================================
+   COMPTINES PERSO (enregistrées sur l'appareil)
+   ============================================================ */
+const LS_KEY = "mesComptinesPerso_v1";
+function loadCustom(){
+  try{ return JSON.parse(localStorage.getItem(LS_KEY)) || []; }catch(e){ return []; }
+}
+function saveCustom(arr){
+  try{ localStorage.setItem(LS_KEY, JSON.stringify(arr)); }catch(e){}
+}
+let customSongs = loadCustom();
+function allSongs(){ return SONGS.concat(customSongs); }
+
+/* ============================================================
    LISTE DES CHANSONS
    ============================================================ */
 const list = document.getElementById("song-list");
-SONGS.forEach(song=>{
-  const b = document.createElement("button");
-  b.className = "song-btn";
-  b.innerHTML = `<span class="emoji">${song.emoji}</span>
-    <span><span class="t">${song.title}</span><span class="s">${song.sub}</span></span>`;
-  b.onclick = ()=>selectSong(song.id, b);
-  list.appendChild(b);
-});
+function renderSongList(){
+  list.innerHTML = "";
+  allSongs().forEach(song=>{
+    const b = document.createElement("button");
+    b.className = "song-btn";
+    b.dataset.sid = song.id;
+    b.innerHTML = `<span class="emoji">${song.emoji}</span>
+      <span><span class="t">${song.title}</span><span class="s">${song.sub}</span></span>`;
+    b.onclick = ()=>selectSong(song.id, b);
+    list.appendChild(b);
+  });
+}
+renderSongList();
 
 /* ============================================================
    LECTEUR
@@ -417,7 +491,7 @@ function selectSong(id, btn){
   stopPlay(); stepMode=false; stepPos=0;
   document.querySelectorAll(".song-btn").forEach(x=>x.classList.remove("active"));
   if(btn) btn.classList.add("active");
-  current = SONGS.find(s=>s.id===id);
+  current = allSongs().find(s=>s.id===id);
   titleEl.textContent = current.emoji+" "+current.title;
   verifyEl.hidden = current.verified;
   verifyEl.textContent = "♪ Mélodie à confirmer à l'oreille — dis-moi si une note sonne faux, je la corrige.";
@@ -516,6 +590,89 @@ document.getElementById("next-note").onclick = nextNote;
 document.getElementById("prev-note").onclick = prevNote;
 document.getElementById("faster").onclick = ()=>setTempo(1);
 document.getElementById("slower").onclick = ()=>setTempo(-1);
+
+/* ============================================================
+   ÉDITEUR : AJOUTER UNE COMPTINE
+   ============================================================ */
+let edSeq = [];
+const edPalette = document.getElementById("ed-palette");
+const edPreview = document.getElementById("ed-preview");
+const edTitle   = document.getElementById("ed-title");
+const edSavedWrap = document.getElementById("ed-saved-wrap");
+const edSaved   = document.getElementById("ed-saved");
+
+// palette de formes
+ORDER.forEach(key=>{
+  const n = NOTES[key];
+  const b = document.createElement("button");
+  b.className = "ed-key"+(n.dark?" dark":"");
+  b.style.background = n.color;
+  b.innerHTML = `<span class="sh">${n.shape}</span><span class="lb">${n.solf}</span>`;
+  b.onclick = ()=>{ edSeq.push(key); playNote(key,0.55); renderEdPreview(); };
+  edPalette.appendChild(b);
+});
+
+function renderEdPreview(){
+  if(!edSeq.length){
+    edPreview.innerHTML = `<span class="ed-empty">Appuie sur les formes ci-dessus…</span>`;
+    return;
+  }
+  edPreview.innerHTML = edSeq.map(key=>{
+    const n = NOTES[key];
+    return `<div class="pv${n.dark?' dark':''}" style="background:${n.color}">${n.shape}</div>`;
+  }).join("") + `<div class="ed-count" style="flex-basis:100%">${edSeq.length} note${edSeq.length>1?"s":""}</div>`;
+}
+
+document.getElementById("ed-undo").onclick = ()=>{ edSeq.pop(); renderEdPreview(); };
+document.getElementById("ed-clear").onclick = ()=>{ edSeq=[]; renderEdPreview(); };
+
+document.getElementById("ed-save").onclick = ()=>{
+  const title = edTitle.value.trim();
+  if(!title){ edTitle.focus(); edTitle.style.borderColor="#e6194B"; return; }
+  if(!edSeq.length){ return; }
+  const usedNums = [...new Set(edSeq.map(k=>NOTES[k].num))].sort((a,b)=>a-b);
+  const song = {
+    id: "perso_"+title.toLowerCase().replace(/[^a-z0-9]+/g,"-")+"_"+edSeq.length,
+    emoji: "🎵", title: title,
+    sub: "Ma comptine · touches "+usedNums.join(" "),
+    verified: true, custom: true,
+    seq: edSeq.map(k=>[k,""])
+  };
+  customSongs.push(song);
+  saveCustom(customSongs);
+  edSeq=[]; edTitle.value=""; edTitle.style.borderColor="";
+  renderEdPreview();
+  renderSongList();
+  renderSaved();
+  // aperçu direct de la chanson ajoutée
+  document.querySelector('nav button[data-tab="chansons"]').click();
+  const btn = list.querySelector(`[data-sid="${song.id}"]`);
+  selectSong(song.id, btn);
+};
+
+function renderSaved(){
+  edSavedWrap.hidden = customSongs.length===0;
+  edSaved.innerHTML = customSongs.map((s,idx)=>
+    `<div class="row"><b>${s.title}</b>
+       <button data-play="${idx}">▶︎</button>
+       <button class="del" data-del="${idx}">Supprimer</button></div>`).join("");
+  edSaved.querySelectorAll("[data-del]").forEach(btn=>{
+    btn.onclick = ()=>{
+      const i = +btn.dataset.del;
+      customSongs.splice(i,1); saveCustom(customSongs);
+      renderSongList(); renderSaved();
+    };
+  });
+  edSaved.querySelectorAll("[data-play]").forEach(btn=>{
+    btn.onclick = ()=>{
+      const s = customSongs[+btn.dataset.play];
+      document.querySelector('nav button[data-tab="chansons"]').click();
+      selectSong(s.id, list.querySelector(`[data-sid="${s.id}"]`));
+    };
+  });
+}
+renderEdPreview();
+renderSaved();
 
 /* Sélectionne la 1re chanson au démarrage */
 selectSong("lune", document.querySelector(".song-btn"));
