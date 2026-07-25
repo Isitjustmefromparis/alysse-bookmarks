@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<style>
+  @page { size: A4 portrait; margin: 14mm 12mm; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"DejaVu Sans","Arial",sans-serif;color:#000;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .song{page-break-after:always;padding-bottom:6mm}
+  .song:last-child{page-break-after:auto}
+  h1{font-size:30pt;text-align:center;margin-bottom:2mm}
+  .sub{text-align:center;font-size:12pt;color:#000;margin-bottom:3mm}
+  .todo{text-align:center;font-size:10pt;border:1.5pt solid #000;border-radius:4pt;display:inline-block;padding:1mm 3mm;margin:0 auto 3mm}
+  .todo-wrap{text-align:center}
+  /* légende des formes */
+  .legend{display:flex;flex-wrap:wrap;justify-content:center;gap:2mm 5mm;border:2pt solid #000;border-radius:6pt;padding:3mm;margin:0 0 6mm}
+  .legend .item{display:flex;align-items:center;gap:2mm;font-size:12pt;font-weight:bold}
+  .legend .sh{font-size:17pt}
+  /* séquence */
+  .seq{display:flex;flex-wrap:wrap;gap:5mm 4mm;justify-content:center;align-content:flex-start}
+  .note{width:26mm;text-align:center}
+  .cell{border:2.5pt solid #000;border-radius:8pt;height:24mm;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+  .cell .sh{font-size:30pt;line-height:1}
+  .cell .num{position:absolute;top:1mm;right:2mm;font-size:9pt;font-weight:bold}
+  .note .solf{font-weight:bold;font-size:12pt;margin-top:1.5mm}
+  .note .lyric{font-size:10pt;color:#000}
+  .foot{text-align:center;font-size:8pt;color:#000;margin-top:6mm}
+  .howto{text-align:center;font-size:10.5pt;margin-bottom:5mm}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const NOTES = {
+  do : {solf:"Do",  num:1, shape:"★"},
+  re : {solf:"Ré",  num:2, shape:"■"},
+  mi : {solf:"Mi",  num:3, shape:"●"},
+  fa : {solf:"Fa",  num:4, shape:"▲"},
+  sol: {solf:"Sol", num:5, shape:"▬"},
+  la : {solf:"La",  num:6, shape:"♥"},
+  si : {solf:"Si",  num:7, shape:"◆"},
+  do2: {solf:"Do",  num:8, shape:"⬢"},
+};
+const SONGS = [
+  { title:"Au clair de la lune", sub:"Touches Do · Ré · Mi", verified:true,
+    seq:[["do","Au"],["do","clair"],["do","de"],["re","la"],["mi","lu"],["re","ne"],["do","mon"],["mi","a"],["re","mi"],["re","Pier"],["do","rot"],["do","Prê"],["do","te"],["do","moi"],["re","ta"],["mi","plu"],["re","me"],["do","pour"],["mi","é"],["re","cri"],["re","r'un"],["do","mot"]] },
+  { title:"Frère Jacques", sub:"Touches Do → La", verified:true,
+    seq:[["do","Frè"],["re","re"],["mi","Jac"],["do","ques"],["do","Frè"],["re","re"],["mi","Jac"],["do","ques"],["mi","Dor"],["fa","mez"],["sol","vous"],["mi","Dor"],["fa","mez"],["sol","vous"],["sol","Son"],["la","nez"],["sol","les"],["fa","ma"],["mi","ti"],["do","nes"],["sol","Son"],["la","nez"],["sol","les"],["fa","ma"],["mi","ti"],["do","nes"],["do","Din"],["sol","dan"],["do","don"],["do","Din"],["sol","dan"],["do","don"]] },
+  { title:"Ah ! vous dirai-je maman", sub:"« Brille, petite étoile » · Do → La", verified:true,
+    seq:[["do","Ah"],["do","vous"],["sol","di"],["sol","rai"],["la","je"],["la","ma"],["sol","man"],["fa","Ce"],["fa","qui"],["mi","cau"],["mi","se"],["re","mon"],["re","tour"],["do","ment"],["sol","Pa"],["sol","pa"],["fa","veut"],["fa","que"],["mi","je"],["mi","rai"],["re","sonne"],["sol","Comme"],["sol","une"],["fa","gran"],["fa","de"],["mi","per"],["mi","son"],["re","ne"],["do","Moi"],["do","je"],["sol","dis"],["sol","que"],["la","les"],["la","bon"],["sol","bons"],["fa","Va"],["fa","lent"],["mi","mieux"],["mi","que"],["re","la"],["re","rai"],["do","son"]] },
+  { title:"Bateau sur l'eau", sub:"Partition Vilac · Do → Sol", verified:true,
+    seq:[["sol","Ba"],["mi","teau"],["sol","sur"],["mi","l'eau"],["re","la"],["mi","ri"],["fa","viè"],["mi","re"],["re","la"],["sol","ri"],["mi","viè"],["do","re"],["sol","Ba"],["mi","teau"],["sol","sur"],["mi","l'eau"],["re","la"],["mi","ri"],["fa","viè"],["mi","re"],["re","et"],["sol","plouf"],["mi","dans"],["do","l'eau"]] },
+  { title:"L'araignée Gipsy", sub:"À confirmer · Do → Mi", verified:false,
+    seq:[["do","L'a"],["do","rai"],["do","gnée"],["re","Gip"],["mi","sy"],["mi","mon"],["mi","te"],["re","à"],["do","la"],["re","gout"],["mi","tiè"],["do","re"]] },
+  { title:"Une souris verte", sub:"À confirmer · Do → Sol", verified:false,
+    seq:[["do","U"],["re","ne"],["mi","sou"],["fa","ris"],["sol","ver"],["sol","te"],["sol","qui"],["fa","cou"],["mi","rait"],["re","dans"],["do","l'her"],["do","be"]] },
+];
+
+const usedKeys = seq => [...new Set(seq.map(s=>s[0]))];
+const root = document.getElementById("root");
+SONGS.forEach(song=>{
+  const legendKeys = ["do","re","mi","fa","sol","la"].filter(k=>usedKeys(song.seq).includes(k));
+  const legend = legendKeys.map(k=>`<div class="item"><span class="sh">${NOTES[k].shape}</span> ${NOTES[k].solf} <span style="font-weight:normal">(touche ${NOTES[k].num})</span></div>`).join("");
+  const seq = song.seq.map(([k,ly])=>`
+    <div class="note">
+      <div class="cell"><span class="num">${NOTES[k].num}</span><span class="sh">${NOTES[k].shape}</span></div>
+      <div class="solf">${NOTES[k].solf}</div>
+      <div class="lyric">${ly}</div>
+    </div>`).join("");
+  root.insertAdjacentHTML("beforeend", `
+    <div class="song">
+      <h1>${song.title}</h1>
+      <div class="sub">${song.sub}</div>
+      ${song.verified ? "" : `<div class="todo-wrap"><div class="todo">Mélodie à confirmer à l'oreille</div></div>`}
+      <div class="howto">Suis les formes de gauche à droite et appuie sur la touche qui porte la même forme.</div>
+      <div class="legend">${legend}</div>
+      <div class="seq">${seq}</div>
+      <div class="foot">Mes comptines au piano — formes Vilac ★ Do  ■ Ré  ● Mi  ▲ Fa  ▬ Sol</div>
+    </div>`);
+});
+document.title = "Mes comptines au piano";
+</script>
+</body>
+</html>
