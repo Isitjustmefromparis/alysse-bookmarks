@@ -41,10 +41,69 @@ Angles :
 - hôtellerie et restauration comme lieu de travail : horaires, corps, argent
 - inspections, normes d'hygiène, fermetures administratives
 
-## Autre projet
+---
 
-Ajouter un bloc ici quand on lance quelque chose de nouveau : deux lignes de contexte,
-puis les angles. Sans angles, pas d'items.
+# Script film pipeline
+
+Les longs métrages. Même règle : sans angles renseignés, pas d'items.
+
+## Mary Typhus
+
+Angles :
+- porteurs sains, contagion sans symptôme, comment on identifie le patient zéro
+- quarantaine et enfermement sanitaire, North Brother Island, statut juridique
+- domesticité et cuisine chez les riches à New York au début du XXe
+- enquête sanitaire de terrain : traçage, prélèvements, refus de coopérer
+- typhoïde : transmission, aliments porteurs, symptômes, mortalité
+
+## I Will Be Bach
+
+Angles :
+- métier de musicien d'église au XVIIIe : contrats, salaires, obligations, conflits
+  avec les employeurs
+- fabrication et entretien des orgues, accordeurs, soufflets, expertises
+- copistes, papier, encre, circulation des partitions avant l'imprimé
+- apprentissage et transmission dans les familles de musiciens
+- conditions matérielles de la vie allemande de l'époque : voyages, deuils, chauffage
+
+## Flash-Over
+
+Angles :
+- embrasement généralisé éclair : signes précurseurs, températures, délais
+- caissons d'entraînement, exercices, ce que les pompiers apprennent à voir
+- matériel : ARI, tenues, lances, thermomètres, caméras thermiques
+- procédures d'attaque et de ventilation, ordres, radio
+- retours d'expérience et rapports d'accidents réels
+
+## Les Vedettes de Cherbourg
+
+- sujet : `À CONFIRMER` les chantiers navals de Cherbourg, ou l'affaire des vedettes
+  parties de Cherbourg en 1969
+- angles : `À REMPLIR` une fois le sujet confirmé
+
+## La dague de mon père
+
+- angles : `À REMPLIR`
+
+## Des Armes
+
+- angles : `À REMPLIR`
+
+## Les Petits Pas
+
+- angles : `À REMPLIR`
+
+## Le système
+
+- angles : `À REMPLIR`
+
+## Comme un parfum de ...
+
+- angles : `À REMPLIR`
+
+## Chantez !
+
+- angles : `À REMPLIR`
 
 ---
 
