@@ -1,75 +1,66 @@
 # Sujets à nourrir
 
-Source de vérité pour le mail du matin. Éditable à la main.
+Source de vérité du mail du matin. Éditable à la main, c'est le seul fichier à toucher
+pour changer ce qui arrive dans la boîte.
 
-La base Notion "Projets" (`collection://7bef0766-0c24-4ee4-8144-e19793a49526`) donne
-l'état et la priorité de chaque projet. Elle ne donne pas le sujet : les fiches sont
-vides. Les angles ci-dessous sont donc à remplir et à corriger par Alysse.
-
-Format : un bloc par projet actif. `angles` = ce qu'on cherche pour ce projet.
-Un projet sans angles renseigné est ignoré par la veille (il ne produit pas d'item
-au hasard).
+Ce sont les projets qu'on fait ensemble, pas la base de suivi Notion. Un projet entre
+dans la rotation dès que ses angles sont renseignés.
 
 ---
 
-## Des robes Versace aux joggings Adidas (Netflix DEMD)
-- priorité : P0, en cours, Netflix (Elsa / Alysse + Camille + Sally)
-- angles : `À CONFIRMER` déclassement social, argent qui arrive vite et repart vite,
-  contrefaçon et vrai-faux luxe, codes vestimentaires comme marqueur de classe,
-  reconversions brutales, économie parallèle des marques
+## PSA, Paris Sport Academy
 
-## Pilote Charlotte
-- priorité : P0, en cours
-- angles : `À REMPLIR`
+Série d'animation. Une académie de sport installée dans un immeuble haussmannien à
+Montmartre : patinoire de 1 800 m² sur le toit, piste de bobsleigh de 420 m qui descend
+du toit jusqu'au trottoir, piste de ski et télésiège du Sacré-Coeur jusqu'à la PSA,
+400 m de dénivelé. Devise : excellence, courage, dépassement. L'équipe 05 fait du
+bobsleigh, du ski de fond, du patinage artistique et de vitesse, de la luge, du curling,
+du snowboard. Personnages : Jo, Charlie, Elsa, Hugo, Marjorie, Sarah.
 
-## Prévert
-- priorité : P0, pas commencé, signé
-- angles : `À REMPLIR`
+Angles :
+- mécanique et matériel des sports de glace : pierres de curling, patins, lames,
+  bobs, luges, fartage, affûtage
+- fabrication et entretien de la glace : surfaceuse, épaisseur, température, fissures
+- installations sportives improbables en pleine ville, sur des toits, dans des
+  bâtiments détournés
+- entraînement des enfants et des jeunes athlètes : gestes, répétition, blessures,
+  peur, sélection
+- Montmartre et ses pentes, escaliers, funiculaire, neige à Paris
+- règles bizarres, disqualifications, incidents réels en compétition
 
-## Police Justice
-- priorité : P0, pas commencé, attente co-auteur
-- angles : `À CONFIRMER` procédure vue de l'intérieur, gestes et contraintes
-  matérielles du commissariat, délais, paperasse, ce que la procédure fait aux gens
+## ITC, Ici Tout Commence
 
-## La dague de mon père
-- priorité : P2, pas commencé
-- angles : `À REMPLIR` (objet transmis, secret de famille ?)
+Arches narratives pour la quotidienne. Institut, Atelier, Double A, Comptoir, Hôtel
+Jourdain, la coloc, le Marais.
 
-## Bullshit Jobs
-- priorité : P2, pas commencé (dossier envoyé Lagardère et Beaumarchais)
-- angles : `À CONFIRMER` métiers vides, chiffres et témoignages de salariés inutiles,
-  rituels d'entreprise, hiérarchies décoratives, ce qu'on fait de ses journées
+Angles :
+- gestes et techniques de cuisine et de pâtisserie, ratages, tours de main
+- concours culinaires : règlements, épreuves, notation, triche, jury
+- coulisses d'un service : brigade, timing, engueulades, hiérarchie
+- produits, fournisseurs, saisonnalité, prix, pénuries
+- hôtellerie et restauration comme lieu de travail : horaires, corps, argent
+- inspections, normes d'hygiène, fermetures administratives
 
-## Bach
-- priorité : P3, en cours
-- angles : `À REMPLIR`
+## Autre projet
 
-## Projet ECOLE
-- priorité : P3, en cours
-- angles : `À REMPLIR`
-
-## Le petit Suisse
-- priorité : P3, pas commencé
-- angles : `À REMPLIR`
-
-## Catastrophe Netflix
-- priorité : P3, pas commencé
-- angles : `À REMPLIR`
+Ajouter un bloc ici quand on lance quelque chose de nouveau : deux lignes de contexte,
+puis les angles. Sans angles, pas d'items.
 
 ---
 
 ## Sérendipité
 
-Toujours 1 ou 2 items sans rapport avec la pipeline. Terrain de chasse :
+Toujours un item, parfois deux, sans aucun rapport avec la pipeline. Terrain de chasse :
 
 - faits divers concrets, avec une image forte
-- métiers, gestes, outils, ateliers, savoir-faire
+- métiers, gestes, outils, ateliers, savoir-faire en train de disparaître
 - objets, lieux, bâtiments, machines
 - chiffres et mécanismes administratifs qui produisent de l'absurde
 - histoires vraies mal connues, archives, procès
 
 ## Interdits
 
-Pas d'actus générales. Pas de news du milieu ni de nouvelles des connaissances.
-Pas d'auteurs, pas de livres, pas de sorties, pas d'essais, pas de théorie.
-Pas de conseils d'écriture. Pas de méta sur le métier de scénariste.
+Pas d'actus générales, pas de revue de presse. Pas de nouvelles du milieu audiovisuel
+ni des gens qu'elle connaît. Pas d'auteurs, pas de livres, pas de sorties, pas d'essais,
+pas de théorie, pas de concepts. Pas de conseils d'écriture, pas de méta sur le métier.
+Si un item ne tient que par une idée et pas par un fait, il ne part pas.
